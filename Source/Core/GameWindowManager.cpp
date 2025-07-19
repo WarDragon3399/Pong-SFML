@@ -10,10 +10,10 @@ namespace Core
     }
 
     void GameWindowManager::createGameWindow() {
-        // Create the window with specified dimensions and title
         game_window->create(
-            VideoMode(game_window_width, game_window_height),
-            game_title
+            sf::VideoMode::getDesktopMode(),    // Get screen resolution
+            game_title,                        // Window title
+            sf::Style::Fullscreen               // Fullscreen mode
         );
     }
 
@@ -23,8 +23,13 @@ namespace Core
     }
 
     void GameWindowManager::render() {
-        // This will handle all the drawing operations
-        //It'll be used in future lessons
+        // Clear window with orange color (R:200, G:50, B:50, A:255)
+        game_window->clear(sf::Color(200, 50, 50, 255));
+
+        //draw shapes, sprites, etc 
+
+    // Display the changes
+        game_window->display();
     }
 
     RenderWindow* GameWindowManager::getGameWindow() {
