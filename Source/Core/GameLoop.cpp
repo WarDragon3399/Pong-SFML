@@ -1,4 +1,5 @@
 #include "../../Header/Core/GameLoop.h"
+#include "../../Header/Sounds/SoundManager.h"
 
 namespace Core
 {
@@ -7,8 +8,11 @@ namespace Core
 		game_window_manager = new GameWindowManager();
 		event_manager = new EventManager();
 		gameplay_manager = new GameplayManager(event_manager);
+		SoundManager::Initialize();
+		//sound_manager = new SoundManager();
 
 		game_window_manager->initialize();
+		SoundManager::PlayBackgroundMusic();
 	}
 
 	bool GameLoop::isGameRunning()

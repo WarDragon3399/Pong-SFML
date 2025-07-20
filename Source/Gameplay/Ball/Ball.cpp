@@ -3,6 +3,7 @@
 
 namespace Gameplay
 {
+    using namespace std;
     Ball::Ball()
     {
         loadTexture();
@@ -19,7 +20,7 @@ namespace Gameplay
         pong_ball_sprite.setTexture(pong_ball_texture);
         pong_ball_sprite.setScale(scale_x, scale_y);
         pong_ball_sprite.setPosition(position_x, position_y);
-
+        current_state = BallState::Idle;
         velocity = Vector2f(ball_speed, ball_speed);     // Initial velocity in a random direction
     }
 
@@ -61,10 +62,15 @@ namespace Gameplay
     {
         FloatRect ball_bounds = pong_ball_sprite.getGlobalBounds();
 
-        if ((ball_bounds.top <= top_boundary && velocity.y < 0) ||
-            (ball_bounds.top + ball_bounds.height >= bottom_boundary && velocity.y > 0))
+        if (ball_bounds.top <= top_boundary && velocity.y < 0)
         {
             velocity.y = -velocity.y;  // Reverse vertical direction
+            SoundManager::PlaySoundEffect(SoundType::BALL_BOUNCE);
+        }
+        if (ball_bounds.top + ball_bounds.height >= bottom_boundary && velocity.y > 0)
+        {
+            velocity.y = -velocity.y;  // Reverse vertical direction
+            SoundManager::PlaySoundEffect(SoundType::BALL_BOUNCE);
         }
     }
 
@@ -74,16 +80,19 @@ namespace Gameplay
         const RectangleShape& player2Paddle = player2->getPaddleSprite();
 
         FloatRect ball_bounds = pong_ball_sprite.getGlobalBounds();
+
         FloatRect Player1PaddleBounds = player1Paddle.getGlobalBounds();
         FloatRect player2PaddleBounds = player2Paddle.getGlobalBounds();
 
         if (ball_bounds.intersects(Player1PaddleBounds) && velocity.x < 0)
         {
+            SoundManager::PlaySoundEffect(SoundType::BALL_BOUNCE);
             velocity.x = -velocity.x;  // Reverse horizontal direction
         }
 
         if (ball_bounds.intersects(player2PaddleBounds) && velocity.x > 0)
         {
+            SoundManager::PlaySoundEffect(SoundType::BALL_BOUNCE);
             velocity.x = -velocity.x;  // Reverse horizontal direction
         }
     }

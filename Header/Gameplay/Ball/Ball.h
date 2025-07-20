@@ -2,9 +2,12 @@
 #include <SFML/Graphics.hpp>
 #include "../../Header/Gameplay/Paddle/Paddle.h"
 #include "../../Header/Utility/TimeService.h"
+#include "../../Header/Sounds/SoundManager.h"
+
 using namespace sf;
 using namespace std;
 using namespace Utility;
+using namespace Sound;
 
 namespace Gameplay
 {
@@ -33,7 +36,7 @@ namespace Gameplay
         const float speed_multiplier = 100.0f;
 
         float delay_duration = 2.0f;
-        BallState current_state = BallState::Idle; // Initialize the ball's state
+        BallState current_state;
         float elapsed_delay_time = 0.0f;
 
         const float top_boundary = 20.0f;

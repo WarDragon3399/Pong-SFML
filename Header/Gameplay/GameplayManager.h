@@ -31,8 +31,8 @@ namespace Gameplay
 	public:
 		GameplayManager(EventManager* manager);
 
-		void processRoundEnd();
-		void resetPlayers();
+		void updatePlayerScore();
+		void resetPlayer();
 
 		void update();
 		void render(RenderWindow* game_window);
