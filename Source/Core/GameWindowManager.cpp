@@ -2,37 +2,35 @@
 
 namespace Core
 {
-    void GameWindowManager::initialize() {
-        // Allocate memory for the render window object
+    void GameWindowManager::initialize()
+    {
         game_window = new RenderWindow();
-        // Set up the window with configured properties
+
         createGameWindow();
     }
 
-    void GameWindowManager::createGameWindow() {
-        game_window->create(
-            sf::VideoMode::getDesktopMode(),    // Get screen resolution
-            game_title,                        // Window title
-            sf::Style::Fullscreen               // Fullscreen mode
-        );
+    void GameWindowManager::createGameWindow()
+    {
+        game_window->create(VideoMode(game_window_width, game_window_height), game_title);
     }
 
-    bool GameWindowManager::isGameRunning() {
-        // Return true if window is open, false if closed
+    RenderWindow* GameWindowManager::getGameWindow()
+    {
+        return game_window;
+    }
+
+    bool GameWindowManager::isGameOpen()
+    {
         return game_window->isOpen();
     }
 
-    void GameWindowManager::render() {
-        // Clear window with orange color (R:200, G:50, B:50, A:255)
-        game_window->clear(sf::Color(200, 50, 50, 255));
-
-        //draw shapes, sprites, etc 
-
-    // Display the changes
-        game_window->display();
+    void GameWindowManager::clearGameWindow()
+    {
+        game_window->clear();
     }
 
-    RenderWindow* GameWindowManager::getGameWindow() {
-        return game_window;
+    void GameWindowManager::displayGameWindow()
+    {
+        return game_window->display();
     }
 }

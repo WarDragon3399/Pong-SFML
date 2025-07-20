@@ -1,6 +1,7 @@
+
 #pragma once
-#include "Paddle/Paddle.h"
-#include "Ball/Ball.h"
+#include "../../Header/Gameplay/Ball/Ball.h"
+#include "../../Header/Gameplay/Paddle/Paddle.h"
 
 namespace Gameplay
 {
@@ -16,7 +17,7 @@ namespace Gameplay
 		Ball* ball;
 		Paddle* player1;
 		Paddle* player2;
-	private:
+
 		void initialize();
 
 	public:

@@ -20,7 +20,7 @@ namespace Core
     public:
         void initialize();
         RenderWindow* getGameWindow();
-        bool isGameRunning();
+        bool isGameOpen();
         void clearGameWindow();
         void displayGameWindow();
     };
