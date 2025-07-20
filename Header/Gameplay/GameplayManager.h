@@ -3,6 +3,8 @@
 #include "../../Header/Gameplay/Ball/Ball.h"
 #include "../../Header/Gameplay/Paddle/Paddle.h"
 #include "../../Header/Event/EventManager.h"
+using namespace Event;
+
 namespace Gameplay
 {
 	class GameplayManager
@@ -19,8 +21,6 @@ namespace Gameplay
 		Ball* ball = new Ball();
 		Paddle* player1 = new Paddle(player1_position_x, player1_position_y);
 		Paddle* player2 = new Paddle(player2_postion_x, player2_postion_y);
-
-		void initialize();
 
 	public:
 		GameplayManager(EventManager* manager);

@@ -1,9 +1,6 @@
 #pragma once
 #include "../../Header/Gameplay/GameplayManager.h"
 
-
-
-using namespace Event;
 namespace Gameplay
 {
 	GameplayManager::GameplayManager(EventManager* manager)
@@ -17,6 +14,7 @@ namespace Gameplay
 		player2->update(event_manager->isKeyPressed(Keyboard::Up), event_manager->isKeyPressed(Keyboard::Down));
 		ball->update(player1, player2);
 	}
+
 	void GameplayManager::render(RenderWindow* game_window)
 	{
 		boundary->render(game_window);
