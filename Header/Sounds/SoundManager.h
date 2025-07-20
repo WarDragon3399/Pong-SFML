@@ -20,12 +20,12 @@ namespace Sound
         static const std::string bgmPath;
         static const std::string ballBouncePath;
 
-     
-        static void LoadSoundFromFile();
-
     public:
+        static void Initialize();
         static void PlaySoundEffect(SoundType soundType);
         static void PlayBackgroundMusic();
-        static void Initialize();
+
+    private:
+        static void LoadSoundFromFile();
     };
 }
