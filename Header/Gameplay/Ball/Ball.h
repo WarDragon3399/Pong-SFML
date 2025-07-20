@@ -23,11 +23,14 @@ namespace Gameplay
         void loadTexture();
         void initializeVariables();
 
+        float ball_speed = .5f;
+        Vector2f velocity = Vector2f(ball_speed, ball_speed);
+
     public:
 
         Ball();
-
         void update();
         void render(RenderWindow* game_window);
+        void move();
     };
 }
