@@ -33,4 +33,19 @@ namespace Core
     {
         return game_window->display();
     }
+
+    void GameLoop::initialize()
+    {
+        //other objects
+        gameplay_manager = new GameplayManager();
+    }
+
+    void GameLoop::render()
+    {
+        game_window_manager->clearGameWindow();
+        //render the paddles and ball
+        gameplay_manager->render(game_window_manager->getGameWindow());
+
+        game_window_manager->displayGameWindow();
+    }
 }
